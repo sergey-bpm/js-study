@@ -122,7 +122,7 @@
 // for (let i = 1; i <= 50; ++i) {
 //     arr.push(i) 
 //  }
- 
+
 // //  console.log(arr)
 // //  arr[15] = 'abracadabra'
 // //  console.log(arr)
@@ -152,10 +152,10 @@
 // declaration
 // console.log(scream(15, 11))
 // function scream(a, b) {
-    // alert("AAAAAAAAAAAAA")
-    // const result = a * b
-    // return result
-    // return a * b
+// alert("AAAAAAAAAAAAA")
+// const result = a * b
+// return result
+// return a * b
 // }
 // scream()
 // console.log(scream(15, 13))
@@ -255,6 +255,7 @@ const startGameFunc = () => {
     }
 }
 
+// test github
 
 btnGame.addEventListener("click", startGameFunc)
 
@@ -292,22 +293,101 @@ const choosedState = {
 
 const eventFunc = (e) => {
     // choosedE1[i].addEventListener("click", (e) => {
-        // choose elements
-        // choosedE1[i].className = "choosed_element"
-        // console.log(e)
-        // turn on the counter        
-        if (e.target.className === "") {
-            e.target.className = "choosed_element"
-            choosedState.setCountValue(1)
-        } else {
-            e.target.className = ""
-            choosedState.setCountValue(-1)
-            }
+    // choose elements
+    // choosedE1[i].className = "choosed_element"
+    // console.log(e)
+    // turn on the counter        
+    if (e.target.className === "") {
+        e.target.className = "choosed_element"
+        choosedState.setCountValue(1)
+    } else {
+        e.target.className = ""
+        choosedState.setCountValue(-1)
     }
+}
 
 
 for (let i = 0; i < choosedE1.length; i++) {
     choosedE1[i].addEventListener("click", eventFunc)
 }
 
-choosedE1[2].removeEventListener("click", eventFunc)
+// choosedE1[2].removeEventListener("click", eventFunc)
+
+// unit 6
+
+// const timeIsOver = () => {
+//     alert("time is over!")
+// }
+
+
+
+// setTimeout(timeIsOver, 2000)
+
+// const alarm = setInterval(timeIsOver, 3000)
+
+// const alarm = setInterval(() => {
+//     let wantToSleep = confirm("Do you want to sleep?")
+//     if (wantToSleep) {
+//         console.log("tic")
+//     } else {
+//         clearInterval(alarm)
+//     }
+// }, 3000)
+
+
+// console.log("1")
+// setTimeout(() => {
+//     console.log("2")
+// }, 0)
+// console.log("3")
+
+
+const postsBlock = document.querySelector(".posts_block-container")
+const showPostRTN = document.querySelector(".posts_block button")
+
+
+function addPost(title, body) {
+    const postTitle = document.createElement("h3")
+    const postBody = document.createElement("span")
+    const postItem = document.createElement("p")
+
+    postTitle.innerText = title
+    postBody.innerText = body
+
+    postItem.append(postTitle, postBody)
+    postsBlock.append(postItem)
+}
+
+function getPosts() {
+    fetch("https://jsonplaceholder.typicode.com/posts")
+        .then(res => res.json())
+        .then(data => {
+            for (el of data) {
+                addPost(el.title, el.body)
+            }
+            // addPost(data[7].title, data[7].body)
+        })
+        .catch(err => console.log(err.message))
+}
+
+
+// function createPost(title, body, userId) {
+//     fetch("https://jsonplaceholder.typicode.com/posts", {
+//         method: 'POST',
+//         body: JSON.stringify({
+//             title: title,
+//             body: body,
+//             userId: userId,
+//         }),
+//         headers: {
+//             'Content-type': 'application/json; charset=UTF-8'
+//         }
+//     })
+//         .then(res => {
+//             console.log(res)
+//         })
+//         .catch(err => console.log(err.message))
+// }
+// createPost("title", "body", 15)
+
+showPostRTN.onclick = () => {getPosts()}
