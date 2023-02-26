@@ -11,10 +11,14 @@
 header {
     background-color: lightgreen;
     height: 30px;
+    width: 100%;
+    position: fixed;
+    top: 0;
 }
 
 nav{
     height: inherit;
+    width: inherit;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -24,6 +28,14 @@ nav > a {
     text-decoration: none;
     color: black;
     font-size: 20px;
+}
+
+nav > a:hover {
+    color: rgb(34, 8, 180);
+}
+
+main {
+    margin-top: 50px;
 }
 
 .about_us {

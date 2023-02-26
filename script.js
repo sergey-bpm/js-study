@@ -390,4 +390,6 @@ function getPosts() {
 // }
 // createPost("title", "body", 15)
 
-showPostRTN.onclick = () => {getPosts()}
+// showPostRTN.onclick = () => {getPosts()}
+getPosts()
+
